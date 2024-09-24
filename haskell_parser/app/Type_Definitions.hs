@@ -47,8 +47,10 @@ data Instruction =
     | Xor Name Arg
     | Lsh Name Int
     | Rsh Name Int
-    | Ld Name Int
-    | Ldi Name Int
+    | Ldxw Name Int
+    | Ldi Name Int --Same as Mov?
+    | Stw Int Name --The actual St instruction in eBPF asm does not have an Int as a parameter, it has a value which is [dst + offset]
+                   --For now just Stw, becaus we only have 32-bits words represented (stw = full words)
     deriving Show
  
 
